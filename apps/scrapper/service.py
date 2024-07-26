@@ -14,9 +14,9 @@ def get_exchange_rate_model(currency_pair):
     model_name = f"ExchangeRate{currency_pair.from_currency.code}{currency_pair.to_currency.code}"
     return apps.get_model('scrapper', model_name)
 
-def scrap_exchange_rates(exchangeCurr):
+def scrap_exchange_rates(exchangeCurr,days=10000):
     end_date    = datetime.now()
-    start_date  = end_date - timedelta(days=10000)
+    start_date  = end_date - timedelta(days=days)
     period1 = int(start_date.timestamp())
     period2 = int(end_date.timestamp())
     url = f"https://finance.yahoo.com/quote/{exchangeCurr.getYahooExchSymbol()}/history/?period1={period1}&period2={period2}"
