@@ -1,6 +1,6 @@
-# Raptor
+# Vance Assignment
 
-Backend for Together
+Backend for Asssignment
 
 
 ### Prerequisites
@@ -8,7 +8,7 @@ Backend for Together
 Ensure you have the following installed on your machine:
 
 - Python 3.10+
-- Django
+- Redis
 
 ### Installation
 
@@ -38,6 +38,10 @@ Ensure you have the following installed on your machine:
     python3 manage.py shell
     from apps.scrapper.service import populate_db
     populate_db()
+
+6. **Start your local redis instance**
+    ```bash
+    redis-server
 
 6. **Start Celery**
     Open a new terminal and enter
@@ -70,9 +74,8 @@ Ensure you have the following installed on your machine:
 
 
 ### API DOCUMENTATION
-
     
-    http://localhost:8000/scrape/forex-data?from=USD&to=INR&period=1W
+    http://localhost:8000/api/forex-data?from=USD&to=INR&period=1W
 
     This endpoint takes in a few query parameters as follows:
 
