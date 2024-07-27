@@ -8,7 +8,7 @@ from django.apps import apps
 from django.db import IntegrityError
 from structlog import get_logger
 
-from .models import CurrencyExchange,ExchangeRates
+from .models import CurrencyExchange,ExchangeRates,Currency
 
 logger = get_logger(scrapper='service.py')
 
@@ -75,3 +75,14 @@ def run_scraper():
     active_pairs = CurrencyExchange.objects.all()
     for pair in active_pairs:
             scrap_exchange_rates(pair)
+            
+
+def populate_db():
+    for currency in Currency.CURRENCY_CHOICES:
+        Currency.objects.create(code=currency,name=Currency.CURRENCY_CHOICES[currency])
+    currencies = Currency.objects.all()
+    for i in currencies:
+        for j in currencies:
+            if i.id!=j.id:
+                print(i,j)
+                CurrencyExchange.objects.create(from_currency=i,to_currency=j)
