@@ -50,7 +50,7 @@ DJANGO_APPS = [
 FINANCE_APPS=[
     'apps.scrapper',
 ]
-EXTERNAL_APPS=['django_celery_beat']
+EXTERNAL_APPS=['django_celery_beat',]
 
 INSTALLED_APPS=DJANGO_APPS+FINANCE_APPS+FRAMEWORKS+EXTERNAL_APPS
 

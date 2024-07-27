@@ -58,6 +58,9 @@ class CurrencyExchange(BaseModelMixin):
     
     def getYahooExchSymbol(self):
         return urllib.parse.quote(f"{self.from_currency.code}{self.to_currency.code}=X")
+    
+    def __str__(self):
+        return f"{self.from_currency.code} - {self.to_currency.code}"
 
 class ExchangeRates(BaseModelMixin):
     currency_exchange   = models.ForeignKey(CurrencyExchange, on_delete=models.CASCADE, related_name='currencyExch')

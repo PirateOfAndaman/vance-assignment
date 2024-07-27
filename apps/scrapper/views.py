@@ -9,6 +9,7 @@ from .service import run_scraper
 from .models import Currency,CurrencyExchange,ExchangeRates
 from .serializers import ExchangeRatesSerializer
 
+
 DURATION_MAPPING = {
                 '1W': timedelta(weeks=1),
                 '1M': timedelta(weeks=4),
@@ -16,14 +17,20 @@ DURATION_MAPPING = {
                 '6M': timedelta(weeks=26),
                 '1Y': timedelta(weeks=52)
             }
+
 class TriggerScrapper(APIView):
     def get(self,request):
-        run_scraper()
-        
-        return Response(data={
-            'success':True,
-            'message':'Scrapping Succesful'
-        },status=status.HTTP_200_OK)
+        try:
+            run_scraper()
+            return Response(data={
+                'success':True,
+                'message':'Scrapping Succesful'
+            },status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(data={'success':False,
+                                'message':'Something went wrong on our side',
+                                'data':{}},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class ExchangeRatesView(APIView):
     def get(self,request):

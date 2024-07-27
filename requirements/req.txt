@@ -1,6 +1,7 @@
 amqp==5.2.0
 asgiref==3.8.1
 asttokens==2.4.1
+async-timeout==4.0.3
 beautifulsoup4==4.12.3
 billiard==4.2.0
 celery==5.4.0
@@ -10,8 +11,11 @@ click==8.1.7
 click-didyoumean==0.3.1
 click-plugins==1.1.1
 click-repl==0.3.0
+cron-descriptor==1.4.3
 decorator==5.1.1
 Django==5.0.7
+django-celery-beat==2.6.0
+django-timezone-field==7.0
 djangorestframework==3.15.2
 exceptiongroup==1.2.2
 executing==2.0.1
@@ -26,13 +30,16 @@ prompt_toolkit==3.0.47
 ptyprocess==0.7.0
 pure_eval==0.2.3
 Pygments==2.18.0
+python-crontab==3.2.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
+redis==5.0.7
 requests==2.32.3
 six==1.16.0
 soupsieve==2.5
 sqlparse==0.5.1
 stack-data==0.6.3
+structlog==24.4.0
 traitlets==5.14.3
 typing_extensions==4.12.2
 tzdata==2024.1
