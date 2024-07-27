@@ -29,7 +29,7 @@ Ensure you have the following installed on your machine:
    ```bash
    pip install -r requirements/req.txt
    
-4. **Initial Migrations**
+4. **Apply Initial Migrations**
 	```bash
 	python3 manage.py migrate
 
@@ -74,6 +74,8 @@ Ensure you have the following installed on your machine:
 
 
 ### API DOCUMENTATION
+### Task 1
+## api/forex-data
     
     http://localhost:8000/api/forex-data?from=USD&to=INR&period=1W
 
@@ -86,4 +88,8 @@ Ensure you have the following installed on your machine:
     period: This will be the timeframe for which you want to query data (e.g., 1M, 3M - 1M indicates you are querying exchange data from the last one month).
 
     Entering wrong info, will get a response about how to send correct parameters
-
+## api/trigger-scrapper
+    This endpoint is meant for initial populating of all the historical exchange rates over the last 10000 days
+### Task2
+## Cron Setup
+    The cron job is setup such that, it will fetch the data of GBP-INR and AED-INR every week and add it to the table
