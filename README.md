@@ -55,6 +55,11 @@ Ensure you have the following installed on your machine:
     ```bash
     celery -A finance beat --loglevel=info
 
+6. **Run the development server:**
+
+   ```bash
+   python3 manage.py runserver
+ 
 
 6. **Scrape Historical Data**
     Go to any browser or postman and hit the endpoint
@@ -63,8 +68,18 @@ Ensure you have the following installed on your machine:
 
     This will create start an async task to fetch all the historical exchange data, could take 30-45 min to finish
 
-6. **Run the development server:**
 
-   ```bash
-   python3 manage.py runserver
- 
+### API DOCUMENTATION
+    ```bash
+    http://localhost:8000/scrape/forex-data?from=USD&to=INR&period=1W
+
+    This endpoint takes in a few query parameters as follows:
+
+    from: This will be the from currency code (e.g., GBP, AED).
+
+    to: This will be the to currency code (e.g., INR).
+
+    period: This will be the timeframe for which you want to query data (e.g., 1M, 3M - 1M indicates you are querying exchange data from the last one month).
+
+    Entering wrong info, will get a response about how to send correct parameters
+
