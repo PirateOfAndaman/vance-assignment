@@ -8,6 +8,7 @@ from rest_framework import serializers, status
 from .service import run_scraper
 from .models import Currency,CurrencyExchange,ExchangeRates
 from .serializers import ExchangeRatesSerializer
+from .tasks import wrapper_run_scraper
 
 
 DURATION_MAPPING = {
@@ -21,10 +22,10 @@ DURATION_MAPPING = {
 class TriggerScrapper(APIView):
     def get(self,request):
         try:
-            run_scraper()
+            wrapper_run_scraper.delay()
             return Response(data={
                 'success':True,
-                'message':'Scrapping Succesful'
+                'message':'Scrapping task started succesfully'
             },status=status.HTTP_200_OK)
         except Exception as e:
             return Response(data={'success':False,

@@ -5,7 +5,7 @@ from celery import shared_task
 from celery.schedules import crontab
 from structlog import get_logger
 
-from .service import scrap_exchange_rates 
+from .service import scrap_exchange_rates,run_scraper
 from .models import Currency,CurrencyExchange
 
 logger = get_logger(scrapper='tasks.py')
@@ -22,6 +22,9 @@ celery_app.conf.beat_schedule = {
 }
 celery_app.conf.timezone='UTC'
 
+@celery_app.task
+def wrapper_run_scraper():
+    run_scraper()
 
 @shared_task
 def run_scraper_GBP_INR_task():
