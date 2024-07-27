@@ -70,7 +70,8 @@ Ensure you have the following installed on your machine:
 
 
 ### API DOCUMENTATION
-    ```bash
+
+    
     http://localhost:8000/scrape/forex-data?from=USD&to=INR&period=1W
 
     This endpoint takes in a few query parameters as follows:
